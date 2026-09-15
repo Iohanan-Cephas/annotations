@@ -111,3 +111,64 @@ function sumOfTripledEvens(array) {
     .reduce((acc, curr) => acc + curr);
 }
 ```
+
+</details>
+
+# Exercícios
+
+## Métodos de arrays
+
+- `Translate border-left-width to borderLeftWidth`
+
+```javascript
+function camelize(str) {
+    return str.split("-")
+    .map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1))
+    .join("");
+}
+```
+
+- `Filter range`
+
+```javascript
+function filterRange(array, a, b) {
+    return array.filter(element => (element >= a && element <= b));
+}
+```
+
+- `Filter range "in place"`
+
+```javascript
+function filterRangeInPlace(array, a, b) {
+    for (let i = 0; i < array.length; i++) {
+        let temp = array[i];
+
+        if (array[i] < a || array[i] > b) {
+            array.splice(i, 1);
+            i--;
+        }
+    }
+}
+```
+
+Nota: a diferença desta função para a anterior é que `filterRange` retorna um novo array e `filterRangeInPlace` altera o array original.
+
+- `Sort in decreasing order`
+
+```javascript
+function sortInDecreasingOrder(array) {
+    for (let i = 0; i < array.length; i++) { // roda N vezes
+        for (let j = i + 1; j <array.length; j++) { // roda aproximadamente N/2 vezes
+            if (array[i] < array[j]) { // operação O(1)
+                const temp = array[i]; // operação O(1)
+                array[i] = array[j]; // operação O(1)
+                array[j] = temp; // operação O(1)
+            }
+        }
+    }
+}
+// T(N) = N * (N/2) * c = (c/2) * N^2
+// simplificação big-O -> remove a constante
+// O(n²)
+```
+
