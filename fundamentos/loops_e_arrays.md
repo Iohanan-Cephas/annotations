@@ -4,7 +4,7 @@ Espera um **callback** como argumento. Isso é o mesmo que passar uma outra fun�
 
 Por exemplo, vamos dizer que temos uma função `addOne` que recebe uma variável `num` como argumento e retorna essa variável incrementada em 1, e um array de números `[1, 2, 3, 4, 5]`. Digamos que nós queiramos incrementar todos esses elementos por 1 utilizando nossa função `addOne`.
 
-Ao invés de utilizarmos um loop e iterar todo o array, podemos simplesmente utilizar o método do array `map`.
+Em vez de utilizarmos um loop e iterar todo o array, podemos simplesmente utilizar o método do array `map`.
 
 ``` javascript
 function addOne(num) {
@@ -36,11 +36,11 @@ console.log(array); //saída: [1, 2, 3, 4, 5]
 
 # Método filter()
 
-O método `filter` é similar ao `map`. Ele irá iterar cada elemento do array e aplicar uma função **callback** em cada elemento. Entretanto, ao invés de transformar todos os valores do array, ele retorna um novo array composto apenas pelos elementos que retornaram um valor `true` na função **callback** (ele literalmente "filtra a pesquisa").
+O método `filter` é similar ao `map`. Ele irá iterar cada elemento do array e aplicar uma função **callback** em cada elemento. Entretanto, em vez de transformar todos os valores do array, ele retorna um novo array composto apenas pelos elementos que retornaram um valor `true` na função **callback** (ele literalmente "filtra a pesquisa").
 
 Digamos que temos uma função `isOdd` que retorna `true` se o número passado como argumento for ímpar e `false` caso não seja.
 
-O método `filter` espera que o **callback** retorne, ou `true`, ou `false`. Se retornar `true` o valor é incluso na saída. Se não, não é. Considerando o array do exemplo passado, `[1, 2, 3, 4, 5]`, se quiséssemos remover todos os números pares deste array poderíamos usar o `filter()`dessa forma:
+O método `filter` espera que o **callback** retorne, ou `true`, ou `false`. Se retornar `true` o valor é incluso na saída. Se não, não é. Considerando o array do exemplo passado, `[1, 2, 3, 4, 5]`, se quiséssemos remover todos os números pares deste array poderíamos usar o `filter()` dessa forma:
 
 ```javascript
 function isOdd(num) {
@@ -60,7 +60,7 @@ console.log(array); //saída: [1, 2, 3, 4, 5]
 
 # Método reduce()
 
-Por fim, digamos que queremos multiplicar todos os números do nosso array entre si, dessa forma: `1 * 2 * 3* 4 * 5`. Primeiro, teríamos que declarar uma variável `total` e iniciliazá-la em 1. Então, iríamos iterar por todo array com um loop `for` e multiplicar o `total` pelo número atual.
+Por fim, digamos que queremos multiplicar todos os números do nosso array entre si, dessa forma: `1 * 2 * 3 * 4 * 5`. Primeiro, teríamos que declarar uma variável `total` e inicializá-la em 1. Então, iríamos iterar por todo array com um loop `for` e multiplicar o `total` pelo número atual.
 
 Não precisamos fazer tudo isso; nós temos o método `reduce` para esse serviço. Assim, como `map()` e `filter()`, ele espera um **callback**. Entretanto, tem duas diferenças neste método:
 - A função **callback** espera dois argumentos ao invés de um. O primeiro argumento é o `accumulator`, que é valor atual do resultado *naquele momento da iteração*. Na primeira vez, esse valor pode ser o `initialValue`, ou o primeiro elemento do array se nenhum `initialValue` for fornecido. O segundo argumento do **callback** é `current` (valor atual), que é o item que está sendo atualmente iterado.
