@@ -57,3 +57,57 @@ console.log(array); //saída: [1, 2, 3, 4, 5]
 - `filter()` irá iterar por `array` e passar todo elemento para o **callback** `isOdd`.
 - `isOdd` retorna `true` para todo elemento do array que for ímpar.
 - Se for um número par, `isOdd` retorna `false` e o elemento não é incluído na saída.
+
+# Método reduce()
+
+Por fim, digamos que queremos multiplicar todos os números do nosso array entre si, dessa forma: `1 * 2 * 3* 4 * 5`. Primeiro, teríamos que declarar uma variável `total` e iniciliazá-la em 1. Então, iríamos iterar por todo array com um loop `for` e multiplicar o `total` pelo número atual.
+
+Não precisamos fazer tudo isso; nós temos o método `reduce` para esse serviço. Assim, como `map()` e `filter()`, ele espera um **callback**. Entretanto, tem duas diferenças neste método:
+- A função **callback** espera dois argumentos ao invés de um. O primeiro argumento é o `accumulator`, que é valor atual do resultado *naquele momento da iteração*. Na primeira vez, esse valor pode ser o `initialValue`, ou o primeiro elemento do array se nenhum `initialValue` for fornecido. O segundo argumento do **callback** é `current` (valor atual), que é o item que está sendo atualmente iterado.
+- O `reduce()` em si toma um `initialValue` como um segundo argumento opcional (depois do **callback**). O que ajuda quando não queremos que nosso valor inicial seja o primeiro elemento do array. Assim, se quiséssemos somar todos os números em um array, poderíamos chamar o método `reduce` sem um `initialValue`, mas se quiséssemos somar todos os números em um array e adicionar 10, então declararíamos 10 como `initialValue`.
+
+```javascript
+const array = [1, 2, 3, 4, 5];
+const productOfAllNums = array.reduce((total, currentItem) => {
+    return total * currentItem;
+}, 1);
+
+console.log(productOfAllNums); //saída: 120
+console.log(array); //saída: [1, 2, 3, 4, 5]
+```
+
+Na função acima nós:
+- Passamos o **callback**, que é o `(total, currentItem) => total * currentItem`.
+- Initicializamos o `total` em `1`no segundo argumento.
+
+# Prática rápida
+
+Reescrever a função `sumOfTripledEvens(array)` utilizando estes 3 métodos.
+
+```javascript
+function sumOfTripledEvens(array) {
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        //verifica se o elemento do array no index i é par
+        if (array[i] % 2 === 0) {
+            // multiplica esse número por 3
+            const tripleEvenNumber = array[i] * 3;
+            // adiciona esse número triplicado ao total
+            sum += tripleEvenNumber;
+        } 
+    }
+    return sum;
+}
+```
+
+<details>
+<summary>Solução</summary>
+
+```javascript
+function sumOfTripledEvens(array) {
+  return array
+    .filter((num) => num % 2 === 0)
+    .map((num) => num * 3)
+    .reduce((acc, curr) => acc + curr);
+}
+```
