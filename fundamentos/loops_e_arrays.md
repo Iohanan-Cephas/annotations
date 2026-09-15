@@ -8,13 +8,28 @@ Ao invés de utilizarmos um loop e iterar todo o array, podemos simplesmente uti
 
 ``` javascript
 function addOne(num) {
-
     return num + 1;
-
 }
 
 const arr = [1, 2, 3, 4, 5];
 const mappedArr = arr.map(addOne);
 
-console.log(mappedArr);
+console.log(mappedArr); //saída: [2, 3, 4, 5, 6]
+```
+
+`map` retorna um novo array e não modifica o original.
+
+```javascript
+//array original inalterado
+console.log(arr); //saída: [1, 2, 3, 4, 5]
+```
+
+Refatorando o código, já que não estamos utilizando a função `addOne` em mais nenhum outro lugar e é uma função simples. Podemos defini-la como uma função arrow:
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+const mappedArr = arr.map((num) => num + 1);
+
+console.log(mappedArr); //saída: [2, 3, 4, 5, 6]
+console.log(arr); //saída: [1, 2, 3, 4, 5]
 ```
